@@ -1,6 +1,7 @@
 {       
     "\\RR": "\\mathbb{R}",
     "\\vek": "{\\begin{pmatrix}#1\\\\#2\\end{pmatrix}}",
-    "\\costfct": "\\theta_j := \\theta_j - \\alpha(\\frac{\\delta}{\\delta\\theta_j})J(\\theta_0, \\theta_1)",
-    "\\costfct2": "\\theta_#1 := \\theta_#1 - \\alpha(\\frac{\\delta}{\\delta\\theta_#1})J(\\theta_#1, \\theta_#0)"
+    "\\genericGD": "\\theta_j := \\theta_j - \\alpha(\\frac{\\delta}{\\delta\\theta_j})J(\\theta_0, \\theta_1)",
+    "\\lrHypot": "h_\\theta(x) = \\theta_0 + \\theta_1(x)",
+    "\\lrLoss": "J(\\theta_0, \\theta_1) = \\frac{1}{2m}\\sum_{i=1}^{m}(h_{\\theta}(x_i) - y_i)^2"
 }

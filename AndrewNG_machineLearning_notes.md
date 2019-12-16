@@ -37,15 +37,21 @@ If target value is continuous $\rightarrow$ $\textit{regression}$, if discrete $
 Cost function
 -------------
 
-$h_\theta(x) = \theta_0 + \theta_1(x)$   $\rightarrow$ this is just a linear mapping with $\theta_0$ the bias.
+The hypothesis: 
+
+$$\lrHypot$$ 
+
+is just a linear mapping with $\theta_0$ the bias.
 
 $$\textit{min}_{\theta_0, \theta_1} \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i) - y_i)^2$$
 
 "Find the values of $\theta_0, \theta_1$ so that the average (1/2m) of the sum of squared errors between my predictions minus the actual values of the X is minimized" .
 
-This means we need to minimize the Mean-Squared-Error cost function J 
+This means we need to minimize the Mean-Squared-Error cost function 
 
-$$J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i) - y_i)^2 $$
+$$\lrLoss$$
+
+<!-- lrJ defined in macros -> $$J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i) - y_i)^2 $$ -->
 
 Example
 -------
@@ -72,7 +78,7 @@ Gradient Descent Algorithm
 
 <!-- The cost function \costfct is defined in macros.json -->
 repeat untill convergence {  
-    $\qquad$ $\costfct$\
+    $\qquad$ $\genericGD$\
 } (for $j$ = 0 and $j$=1)
 
 Where:
@@ -111,13 +117,22 @@ Gradient Descent Intuition
 Answer to the question in the video:
 
 * Q: Suppose $\theta_1$​ is at a local optimum of $J(\theta_1)$. What will one step of gradient descent $\theta_1:=\theta_1−\alpha\frac{\delta}{\delta\theta_1}J(\theta_1)$ do?
-* A: \
-    $\quad$ Leave $\theta_1$ unchanged
+* A: Leave $\theta_1$ unchanged
 
-This also means that GD can converge to a local minimum even with a fixed learning rate $\alpha$.
+This also means that GD can converge to a local minimum even with a fixed learning rate $\alpha$. As we approach a local minimum, GD will automatically take smalelr steps. (if $\delta$ is steep, bigger steps, if $\delta$ is small, smaller steps). $\delta$ approaches 0 as we approach the bottom of our *convex* function.
 
+Gradient Descent for Linear Regression
+--------------------------------------
 
+We want to do the update step
 
+$$\genericGD$$ 
 
+on the loss function 
 
+$$\lrLoss$$
+
+with hypothesis 
+
+$$\lrHypot$$
 
