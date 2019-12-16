@@ -1,0 +1,6 @@
+{       
+    "\\RR": "\\mathbb{R}",
+    "\\vek": "{\\begin{pmatrix}#1\\\\#2\\end{pmatrix}}",
+    "\\costfct": "\\theta_j := \\theta_j - \\alpha(\\frac{\\delta}{\\delta\\theta_j})J(\\theta_0, \\theta_1)",
+    "\\costfct2": "\\theta_#1 := \\theta_#1 - \\alpha(\\frac{\\delta}{\\delta\\theta_#1})J(\\theta_#1, \\theta_#0)"
+}
