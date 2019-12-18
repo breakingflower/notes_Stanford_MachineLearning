@@ -1,7 +1,7 @@
 # Andrew NG Machine Learning Coursera Course Notes
 Provides notes for Andrew NG Machine Learning Course on Coursera. 
 
-# Lesson 1
+# Week 1
 
 * Supervised learning -> give right answer 
 * Regression problem -> Predict real-valued output 
@@ -25,17 +25,13 @@ Provides notes for Andrew NG Machine Learning Course on Coursera.
 
 ![Example simple model](01_example_simple_model.png)
 
-Goal
-
------
+### Goal
 
 Given a training set, our goal is to find a function $h : X \rightarrow Y$ so that $h(x)$ is a good predictor for the corresponding value of $Y$.
 
 If target value is continuous $\rightarrow$ $\textit{regression}$, if discrete $\rightarrow$ $\textit{classification}$
 
-Cost function
-
------
+### Cost function
 
 The hypothesis:
 
@@ -53,9 +49,7 @@ $$\lrLoss$$
 
 <!-- lrJ defined in macros -> $$J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i) - y_i)^2 $$ -->
 
-Example
-
------
+### Example
 
 J(0.5) --> Each value of $\theta_1$ gives a different loss. We want to find the value that MINIMIZES this value, in this case the GLOBAL MINIMUM  $\theta_1 = 1$. 
 
@@ -65,9 +59,7 @@ Only $\theta_1$ is a sort of bow shape. If you have both $\theta_0$ and $\theta_
 
 ![Example gradient (double variable)](01_example_gradient.png)
 
-Gradient Descent
-
-================
+## Gradient Descent
 
 More general algo --> use GD to minimize some arbitrary cost function $J(\theta_0, \theta_1)$
 
@@ -76,7 +68,7 @@ More general algo --> use GD to minimize some arbitrary cost function $J(\theta_
 * do this until you converge to a (local) minimum
 * if you start in a different point, you might get a different local minimum
 
-## Gradient Descent Algorithm
+### Gradient Descent Algorithm
 
 <!-- The cost function \costfct is defined in macros.json -->
 repeat untill convergence {  
@@ -110,9 +102,7 @@ Answer to the question in the video:
     $\quad \theta_0 = 1 + \sqrt{1*2}$\
     $\quad \theta_1 = 2 + \sqrt{2*1}$
 
-Gradient Descent Intuition
-
------
+### Gradient Descent Intuition
 
 * Essentially *taking the slope of the line that is tangent to the (cost)function.*
 * If $\alpha$ is too small, it takes long, if $\alpha$ is too big, it might fail to converge / overshoot.
@@ -124,9 +114,7 @@ Answer to the question in the video:
 
 This also means that GD can converge to a local minimum even with a fixed learning rate $\alpha$. As we approach a local minimum, GD will automatically take smalelr steps. (if $\delta$ is steep, bigger steps, if $\delta$ is small, smaller steps). $\delta$ approaches 0 as we approach the bottom of our *convex* function.
 
-Gradient Descent for Linear Regression
-
------
+### Gradient Descent for Linear Regression
 
 We want to do the update step
 
@@ -172,7 +160,7 @@ Answer to the question in the video:
 
 ## Matrices and Vectors
 
-Matrix example: 
+Matrix example:
 
 $$\begin{bmatrix}1 & 2 & 3 \\4& 5 & 6 \end{bmatrix}$$ 
 
@@ -190,7 +178,7 @@ Where $A_{ij}$ = i, j entry ($i^{th}$ row and $j^{th}$ col).
 
 (there is a question in the video, but its really straight forward)
 
-A vector example: 
+A vector example:
 
 $$ y = \begin{bmatrix} 460 \\ 232 \\ 315 \\ 178 \end{bmatrix}$$ 
 
@@ -218,9 +206,7 @@ dim_v = size(v)
 A_23 = A(2,3)
 ```
 
-Matrix operations
-
----------------
+### Matrix operations
 
 Lets have two matrices $A = \begin{bmatrix} 1&0 \\ 2& 5 \\ 3 &1 \end{bmatrix}$ and $B = \begin{bmatrix} 4&0.5 \\ 2&5 \\ 0&1 \end{bmatrix}$
 
@@ -230,20 +216,20 @@ Scalar multiplication $3 \cdot A = \begin{bmatrix} 3 & 0 \\ 6 & 15 \\ 9 & 3 \end
 
 Combination of operands: mult/div > sum/diff
 
-Example: 
+Example:
 
 $\begin{bmatrix} 4 \\ 6 \\ 7 \end{bmatrix}/2 - 3\cdot\begin{bmatrix} 2 \\ 1 \\ 0\end{bmatrix} = \begin{bmatrix} 2 - 6\\ 3 - 3 \\ 3.5 - 0\end{bmatrix} = \begin{bmatrix} -4 \\ 0 \\ 3.5 \end{bmatrix}$ 
 
 ```matlab
-% Initialize matrix A and B 
+% Initialize matrix A and B
 A = [1, 2, 4; 5, 3, 2]
 B = [1, 3, 4; 1, 1, 1]
 
-% Initialize constant s 
+% Initialize constant s
 s = 2
 
 % See how element-wise addition works
-add_AB = A + B 
+add_AB = A + B
 
 % See how element-wise subtraction works
 sub_AB = A - B
@@ -258,23 +244,21 @@ div_As = A / s
 add_As = A + s
 ```
 
-Matrix Vector Multiplication
+### Matrix Vector Multiplication
 
-----------------------------
+Assume $A$ = [m x n] and $B$ = [n x 1]. If we want to do $A*B$, the result will be of dimension $C$ = [m x 1]. We take the $i^{th}$ row of $A$ and sum the results of the multiplcation with the first value of $B$.
 
-Assume $A$ = [m x n] and $B$ = [n x 1]. If we want to do $A*B$, the result will be of dimension $C$ = [m x 1]. We take the $i^{th}$ row of $A$ and sum the results of the multiplcation with the first value of $B$. 
+Example:
 
-Example: 
-
-$$C = A \cdot B = \begin{bmatrix} 1 & 2 & 1 & 5 \\ 0 & 3 & 0 & 4 \\ -1 & -2 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix}1 \\ 3 \\ 2 \\1\end{bmatrix}$$ 
+$$C = A \cdot B = \begin{bmatrix} 1 & 2 & 1 & 5 \\ 0 & 3 & 0 & 4 \\ -1 & -2 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix}1 \\ 3 \\ 2 \\1\end{bmatrix}$$
 
 The dimension of the above product will be [3x4][4x1] = [3x1]. 
 The result of the product will be
 
 $$ \begin{bmatrix} 1*1 + 2*3 + 1*2 + 5*1 \\ 0*1 + 3*3 + 0*2 + 4*1 \\ -1*1 + -2*3 + 0*2 + 0*1 &  \end{bmatrix} = \begin{bmatrix}14 \\ 13 \\ -7\end{bmatrix}$$
 
-Example of house sizes: 
-Using the hypothesis 
+Example of house sizes:
+Using the hypothesis
 
 $$ h_\theta(x) = -40 + 0.25x$$
 
@@ -282,13 +266,12 @@ And the house prices in the second column:
 
 $$ M = \begin{bmatrix} 1 & 2104 \\ 1 & 1416 \\ 1 & 1534 \\ 1 & 852 \end{bmatrix}, h_\theta(x) = \begin{bmatrix} -40 \\ 0.25 \end{bmatrix}$$
 
-Then the prediction becomes: 
+Then the prediction becomes:
 
 $$ \textnormal{Prediction} = M \cdot h_\theta = \begin{bmatrix} -40*1 + 0.25*2104 \\ -40*1 + 0.25*1416 \\ -40*1 + 0.25*1534 \\ -40*1 + 0.25*852 \end{bmatrix} $$
 
-Matrix Matrix Multiplication
+### Matrix Matrix Multiplication
 
-----------------------------
 Assume $A$ is a matrix with dim [mxn], and $B$ is a matrix with dim [nxo], then the multiplication of $A$ and $B$ is a matrix $C$ with dim[mxo].
 
 **The $i^{th}$ column of matrix $C$ is obtained by multiplying A with the $i^{th}$ column of matrix $B$ (for $i = 1, 2, ..., o$).**
@@ -305,19 +288,45 @@ We have 3 competing hypothesis:
 
 With the housing prizes this becomes:
 
-$$ \begin{bmatrix} 1 & 2104 \\ 1 & 1416 \\ 1 & 1534 \\ 1 & 852\end{bmatrix} \cdot \begin{bmatrix} -40 & 200 & -150 \\ 0.25 & 0.1 & 0.4 \end{bmatrix} = \begin{bmatrix} h_{\t{0}} & h_{\t{1}} & h_{\t{2}} \\ 486 & 410 & 692 \\ 314 & 342 & 416 \\ 344 & 353 & 464 \\ 173 & 285 & 191 \end{bmatrix}$$
+$$\begin{bmatrix} 1 & 2104 \\ 1 & 1416 \\ 1 & 1534 \\ 1 & 852\end{bmatrix} \cdot \begin{bmatrix} -40 & 200 & -150 \\ 0.25 & 0.1 & 0.4 \end{bmatrix} = \begin{bmatrix} h_{\t{0}} & h_{\t{1}} & h_{\t{2}} \\ 486 & 410 & 692 \\ 314 & 342 & 416 \\ 344 & 353 & 464 \\ 173 & 285 & 191 \end{bmatrix}$$
 
 Which yields all twelve predictions in one easy matmul.
 
-Matmul Multiplication Properties
+### Matmul Multiplication Properties
 
------
 Let $A$ and $B$ be matrices
 
-* **NOT COMMUTATIVE**: In general $A * B \ne B * A$. 
+* **NOT COMMUTATIVE**: In general $A * B \ne B * A$.
 * **ARE ASSOCIATIVE**: $A \cdot B \cdot C = A \cdot (B \cdot C) = (A \cdot B) \cdot C$
 * Identity Matrix is given by $I_{n \cdot n}$, and $A \cdot I = I \cdot A = A$. For example
 
 $$ I_{3} = \begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix}$$
 
+### Inverse and Transpose
 
+Given some number, i.e. 3, there exists a number that if you multiply it with this number it gives you the identity.
+
+Formally, this means that there exists a number , element of $\RR^2$ without 0.
+
+$$ A(A^{-1}) = A^{-1}A= I.$$
+
+#### Matrix inverse
+
+* Only **square matrices** have inverses.
+* For example $\mat{3 & 4 \\ 2 & 16} \cdot \mat{0.4 & -0.1 \\ -0.05 & 0.075} = \mat{1 & 0 \\ 0 & 1} = I_{2x2}$
+* Not necessarily all matrices have an inverse. Matrices that don't have an inverse are *singular* or *degenerate*. 
+
+```matlab
+A = [3 4; 2 16];
+% inverse of a
+A_inv = pinv(A);  
+
+A*A_inv == I;
+> True
+```
+
+#### Matrix Transpose
+
+Columns become rows and rows become columns.
+
+Let $A$ be an mxn matrix and let $B=A^T$. Then $B$ is an nxm matrix and $B_{ij} = A_{ji}$.
