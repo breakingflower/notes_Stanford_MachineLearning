@@ -130,19 +130,19 @@ $$\lrHypot$$
 
 Figure out the partial derivative first:
 
-$$ \deriv{j} $$
+$$ \lrderiv{j} $$
 
 Which simplifies to:
 
-$$ \theta_0: j = 0 : \deriv{0} = \frac{1}{m} \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}) $$
+$$ \theta_0: j = 0 : \lrderiv{0} = \frac{1}{m} \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}) $$
 
-$$ \theta_1: j = 1 : \deriv{1} = \frac{1}{m} \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})  x^{(i)} $$
+$$ \theta_1: j = 1 : \lrderiv{1} = \frac{1}{m} \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})  x^{(i)} $$
 
 So then we can repeat the following until convergence:
 
 repeat untill convergence {  
-    $\qquad \theta_0 := \theta_0 - \alpha \deriv{0}$\
-    $\qquad \theta_1 := \theta_1 - \alpha \deriv{1}$\
+    $\qquad \theta_0 := \theta_0 - \alpha \lrderiv{0}$\
+    $\qquad \theta_1 := \theta_1 - \alpha \lrderiv{1}$\
 } (for $j$ = 0 and $j$=1 and simultaneously)
 
 Which is a **convex quadratic function** for linear regression $\rightarrow$ bow-shaped function that **does not have any other optimum besides the global optimum.**
@@ -288,7 +288,7 @@ We have 3 competing hypothesis:
 
 With the housing prizes this becomes:
 
-$$\begin{bmatrix} 1 & 2104 \\ 1 & 1416 \\ 1 & 1534 \\ 1 & 852\end{bmatrix} \cdot \begin{bmatrix} -40 & 200 & -150 \\ 0.25 & 0.1 & 0.4 \end{bmatrix} = \begin{bmatrix} h_{\t{0}} & h_{\t{1}} & h_{\t{2}} \\ 486 & 410 & 692 \\ 314 & 342 & 416 \\ 344 & 353 & 464 \\ 173 & 285 & 191 \end{bmatrix}$$
+$$\begin{bmatrix} 1 & 2104 \\ 1 & 1416 \\ 1 & 1534 \\ 1 & 852\end{bmatrix} \cdot \begin{bmatrix} -40 & 200 & -150 \\ 0.25 & 0.1 & 0.4 \end{bmatrix} = \overbrace{\begin{bmatrix} 486 & 410 & 692 \\ 314 & 342 & 416 \\ 344 & 353 & 464 \\ 173 & 285 & 191 \end{bmatrix}}^{h_{\t{0}} \quad h_{\t{1}} \quad h_{\t{2}}}$$
 
 Which yields all twelve predictions in one easy matmul.
 
