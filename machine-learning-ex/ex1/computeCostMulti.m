@@ -13,9 +13,10 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+hx = X*theta;
 
-
-
+% cost implementation vectorized
+J = 1/(2*m)*transpose((hx - y))*(hx - y);
 
 % =========================================================================
 

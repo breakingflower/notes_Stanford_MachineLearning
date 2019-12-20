@@ -14,7 +14,11 @@ J = 0;
 %               You should set J to the cost.
 
 
+% size(X) = 97x2 , size_y = 97x1, size_theta=2x1
+hx = X*theta;
 
+% cost implementation vectorized
+J = 1/(2*m)*transpose((hx - y))*(hx - y);
 
 
 % =========================================================================

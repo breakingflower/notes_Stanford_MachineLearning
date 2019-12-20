@@ -1,6 +1,8 @@
 # Andrew NG Machine Learning Coursera Course Notes
 Provides notes for Andrew NG Machine Learning Course on Coursera. 
 
+More general notes can be found [on the coursera website](https://www.coursera.org/learn/machine-learning/resources/JXWWS)
+
 # Week 1
 
 * Supervised learning -> give right answer 

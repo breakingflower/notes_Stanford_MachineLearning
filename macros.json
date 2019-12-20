@@ -16,5 +16,7 @@
     "\\mvlrJ": "J(\\t{})",
     "\\mvlrCost": "\\mvlrJ = \\frac{1}{2m}\\sum_{i=1}^{m}(h_{\\theta}(x^{(i)}) - y^{(i)})^2",
     "\\mvlrGD": "\\t{j} := \\t{j} - \\alpha(\\frac{\\delta}{\\delta\\theta_j})J(\\t{})",
-    "\\mvlrGDDeriv": "\\t{j} := \\t{j} - \\alpha\\frac{1}{m}\\sum_{i=1}^{m}(h_{\\t{}}(x^{(i)}) - y^{(i)})x^{(i)}_j"
+    "\\mvlrGDDeriv": "\\t{j} := \\t{j} - \\alpha\\frac{1}{m}\\sum_{i=1}^{m}(h_{\\t{}}(x^{(i)}) - y^{(i)})x^{(i)}_j",
+
+    "\\normalEqGeneric": "\\t{} = (X^TX)^{-1} X^Ty"
 }
