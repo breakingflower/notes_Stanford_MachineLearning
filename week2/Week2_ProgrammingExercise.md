@@ -65,3 +65,6 @@ The generic normal equation is
 
 $$\normalEqGeneric$$
 
+```matlab
+theta = pinv(transpose(X)*X)*transpose(X)*y
+```
