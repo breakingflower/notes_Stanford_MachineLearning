@@ -83,7 +83,7 @@ Declare convergence if $J(\t{})$ decreases by less than $10^{-3}$ in one iterati
 
 If $J(\t{})$ is **increasing**, GD is not working, you probably need to **lower** $\alpha$, because it keeps *overshooting* the minimum of the cost function. And ofcourse make sure you dont have bugs :).
 
-If $J(\t{})$ is **going up and down and up and down ... **, also use a smaller $\alpha$. 
+If $J(\t{})$ is **going up and down and up and down ... **, also use a smaller $\alpha$.
 
 For sufficiently small $\alpha$, $J(\t{})$ should decrease every iteration. If $\alpha$ is too small, it may be slow to converge.
 
@@ -93,7 +93,7 @@ To choose $\alpha$, try $0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, ...$ (i.e. 3-fol
 
 **Example**: house price prediction. $x_1$ is frontage (front size of the house), $x_2$ is depth of the house. One could create a new feature $x_3$ for the area which is $x_1 \cdot x_2$. Sometimes by defining new features you might get a better model.
 
-In Polynomial Regression, we take can set the variables to match for example a quadratic/cubic or order function (a), or a 
+In Polynomial Regression, we take can set the variables to match for example a quadratic/cubic or order function (a), or a
 
 $$\mat{x_1 = (size) \\ x_2 = (size)^2 \\ x_3 = (size)^3 \\ ...}$$ (a)
 $$\mat{x_1 = (size) \\ x_2 = \sqrt{size} \\ x_3 = \sqrt[3]{size} \\ ...}$$ (b)
@@ -110,7 +110,7 @@ The normal equation is a method to solve for $\t{}$ analytically and allows you 
 
 Example:
 > Intuition: If 1D ($\t{} \in \RR$) \
-> $J(\t{}) = a\t{}^2 + b\t{} + c$. Solving the partial derivative by setting it equal to zero will minimize $J$. 
+> $J(\t{}) = a\t{}^2 + b\t{} + c$. Solving the partial derivative by setting it equal to zero will minimize $J$.
 
 > In the case of $\t{} \in \RR^{n+1}$, we need to do it for each of the partial derivatives at the same time. We will minimize $J$ by explicitely taking its derivatives with respect to $\t{j}$ and setting them to zero. This allows us to find the optimum $\t{}$ without iteration.
 
@@ -123,8 +123,8 @@ If you now use the following, this will give you the value of $\t{}$ that minimi
 $$\normalEqGeneric$$ (1)
 
 Where
-* The dimension of $\t{}$ is equal to the amount of features $n+1$. 
-* $(X^TX)^{-1}$ is the inverse of matrix $X^TX$. 
+* The dimension of $\t{}$ is equal to the amount of features $n+1$.
+* $(X^TX)^{-1}$ is the inverse of matrix $X^TX$.
 
 Solving the normal equation (1) is done in octave by:
 ```matlab
@@ -153,7 +153,7 @@ $$\normalEqGeneric$$
 
 In octave, *pinv* is the **pseudo-inverse**, and *inv* is the inverse. *pinv* should give you the right solution.
 
-What if $X^TX$ is non-invertible? (singular / degenerate matrix?) **This should happen very rarely.** 
+What if $X^TX$ is non-invertible? (singular / degenerate matrix?) **This should happen very rarely.**
 
 * Reduntant features (linearly dependent). e.g.
 
@@ -177,21 +177,20 @@ Your functions must handle the general case. This means:
 
 Debugging:
 
-If your code runs but gives the wrong answers, you can insert a "keyboard" command in your script, just before the function ends. This will cause the program to exit to the debugger, so you can inspect all your variables from the command line. This often is very helpful in analysing math errors, or trying out what commands to use to implement your function. 
+If your code runs but gives the wrong answers, you can insert a "keyboard" command in your script, just before the function ends. This will cause the program to exit to the debugger, so you can inspect all your variables from the command line. This often is very helpful in analysing math errors, or trying out what commands to use to implement your function.
 ```
-
 
 ## Vectorized implementations
 
-### Calculating the hypothesis as a column vector of size (mx1) with: 
+Calculating the hypothesis as a column vector of size (mx1) with:
 
 $$ h_{\t{}}(X) = X\t{}$$
 
-### Calculating the cost in a vectorized form: 
+Calculating the cost in a vectorized form
 
 $$ J(\t{}) = \frac{1}{2m}(X\t{} - \vec{y})^T(X\t{} - \vec{y})$$
 
-### Gradient descent rule can be expressed as: 
+Gradient descent rule can be expressed as
 
 $$ \t{} := \t{} - \alpha\nabla J(\t{}) $$
 
@@ -202,5 +201,3 @@ $$ \nabla J(\t{}) = \mat{\frac{\delta J(\t{})}{\delta\t{O}}\\\frac{\delta J(\t{}
 Finally, the vectorized GD is:
 
 $$\t{} := \t{} - \frac{\alpha}{m}X^T(X\t{} - \vec{y})$$
-
-
