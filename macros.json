@@ -5,6 +5,9 @@
     "\\t": "\\theta_{#1}",
     "\\ra": "\\rightarrow",
     "\\mat": "\\begin{bmatrix}#1\\end{bmatrix}",
+    "\\if": "\\quad\\textnormal{if}\\quad",
+    "\\and": "\\quad\\textnormal{and}\\quad",
+    "\\undersetnorm": "\\underset{#2}{\\textnormal{#1}}",
 
     "\\lrHypot": "h_\\theta(x) = \\theta_0 + \\theta_1(x)",
     "\\lrLoss": "J(\\theta_0, \\theta_1) = \\frac{1}{2m}\\sum_{i=1}^{m}(h_{\\theta}(x^{(i)}) - y^{(i)})^2",
@@ -18,5 +21,15 @@
     "\\mvlrGD": "\\t{j} := \\t{j} - \\alpha(\\frac{\\delta}{\\delta\\theta_j})J(\\t{})",
     "\\mvlrGDDeriv": "\\t{j} := \\t{j} - \\alpha\\frac{1}{m}\\sum_{i=1}^{m}(h_{\\t{}}(x^{(i)}) - y^{(i)})x^{(i)}_j",
 
-    "\\normalEqGeneric": "\\t{} = (X^TX)^{-1} X^Ty"
+    "\\normalEqGeneric": "\\t{} = (X^TX)^{-1} X^Ty",
+
+    "\\binClassHypot": "h_\\theta(x) = \\Theta^Tx",
+    "\\htx": "h_\\theta(x)",
+    "\\logrHypot": "\\htx = \\frac{1}{1+e^{-\\Theta^Tx}}",
+    "\\logrCostLong": "J(\\t{}) = \\frac{-1}{m}[\\sum_{i=1}^{m} y^{(i)}\\log\\htx^{(i)} + (1-y^{(i)})\\log(1-h_{\\t{}}(x^{(i)}))]",
+    "\\logrCostGeneric": "\\textnormal{Cost}(\\htx, y) = \\Big\\{\\begin{array}{ll}-\\log(\\htx) && \\textnormal{if} && y=1 \\ -\\log(1 - \\htx) && \\textnormal{if} && y=0 \\end{array}",
+    "\\logrCost": "\\textnormal{Cost}(\\htx, y)",
+    "\\logrCostFull": "\\logrCost = -y\\log(\\htx) - ((1-y)\\log(1-\\htx)",
+    "\\logGDVec": "\\t{}: = \\t{} -\\frac{\\alpha}{m}X^T(g(X\\t{})-\\vec{y})",
+    "\\sigmoid": "g(z) = \\frac{1}{1+e^{-z}}"
 }

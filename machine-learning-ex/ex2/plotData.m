@@ -12,13 +12,13 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+positive_samples = find(y==1); 
+negative_samples = find(y==0); 
 
-
-
-
-
-
-
+plot(X(positive_samples,1), X(positive_samples,2), 'k+', 'LineWidth', 2,...
+    'MarkerSize', 7);
+plot(X(negative_samples,1), X(negative_samples,2), 'ko', 'LineWidth', 2,...
+    'MarkerSize', 7);
 
 % =========================================================================
 
