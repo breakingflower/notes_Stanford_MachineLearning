@@ -30,11 +30,10 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+% previous exercise   p = sigmoid(X*theta) >= 0.5 ;  
 
-
-
-
-
+activations = sigmoid(X*transpose(all_theta)); % calculate the outputs
+[_, p] = max(activations, [], 2);  % max is the actual number
 
 % =========================================================================
 

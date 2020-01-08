@@ -31,5 +31,10 @@
     "\\logrCost": "\\textnormal{Cost}(\\htx, y)",
     "\\logrCostFull": "\\logrCost = -y\\log(\\htx) - ((1-y)\\log(1-\\htx)",
     "\\logGDVec": "\\t{}: = \\t{} -\\frac{\\alpha}{m}X^T(g(X\\t{})-\\vec{y})",
-    "\\sigmoid": "g(z) = \\frac{1}{1+e^{-z}}"
+    "\\sigmoid": "g(z) = \\frac{1}{1+e^{-z}}",
+
+    "\\hTx": "h_\\Theta(x)",
+    "\\ssb": "#1^{(#2)}",
+    "\\T": "\\Theta_{#1}",
+    "\\Ts": "\\Theta^{(#1)}"
 }

@@ -22,10 +22,19 @@ p = zeros(size(X, 1), 1);
 %
 
 
+% Add ones to the X data matrix
+X = [ones(m, 1) X];
 
+% calculate z2
+z2 = sigmoid(X*transpose(Theta1));
+% add bias unit to the z2 matrix
+z2 = [ones(size(z2, 1), 1) z2]; 
 
+% calculate z3
+z3 = sigmoid(z2*transpose(Theta2));
 
-
+% find highest index similar to predictOneVsAll
+[_, p] = max(z3, [], 2);  % max is the actual number
 
 
 

@@ -36,7 +36,13 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
-
+% from lecture notes
+J = 1/m * (transpose(-y) * log(sigmoid(X*theta)) ... %positive
+        - transpose(1-y)*log(1-sigmoid(X*theta))) ... %negative
+        + lambda/(2*m)*sum(theta(2:end,:).^2); %regularization
+        
+grad = 1/m * transpose(X) * (sigmoid(X*theta) - y); 
+grad(2:end) += lambda/m*theta(2:end); % regularization only on last term
 
 
 
