@@ -4,6 +4,7 @@
     "\\genericGD": "\\theta_j := \\theta_j - \\alpha(\\frac{\\delta}{\\delta\\theta_j})J(\\theta_0, \\theta_1)",
     "\\t": "\\theta_{#1}",
     "\\ra": "\\rightarrow",
+    "\\Ra": "\\Rightarrow",
     "\\mat": "\\begin{bmatrix}#1\\end{bmatrix}",
     "\\if": "\\quad\\textnormal{if}\\quad",
     "\\and": "\\quad\\textnormal{and}\\quad",
@@ -25,8 +26,10 @@
 
     "\\binClassHypot": "h_\\theta(x) = \\Theta^Tx",
     "\\htx": "h_\\theta(x)",
+    "\\htxi": "h_\\theta(x^{(i)})",
     "\\logrHypot": "\\htx = \\frac{1}{1+e^{-\\Theta^Tx}}",
-    "\\logrCostLong": "J(\\t{}) = \\frac{-1}{m}[\\sum_{i=1}^{m} y^{(i)}\\log\\htx^{(i)} + (1-y^{(i)})\\log(1-h_{\\t{}}(x^{(i)}))]",
+    "\\logrCostLong": "J(\\t{}) = \\frac{-1}{m}\\Bigg[\\sum_{i=1}^{m} y^{(i)}\\log\\htxi + (1-y^{(i)})\\log(1-h_{\\t{}}(x^{(i)}))\\Bigg]",
+    "\\logrCostLongReg": "\\logrCostLong + \\frac{\\lambda}{2m}\\sum_{j=1}^{n}\\t{j}^2",
     "\\logrCostGeneric": "\\textnormal{Cost}(\\htx, y) = \\Big\\{\\begin{array}{ll}-\\log(\\htx) && \\textnormal{if} && y=1 \\ -\\log(1 - \\htx) && \\textnormal{if} && y=0 \\end{array}",
     "\\logrCost": "\\textnormal{Cost}(\\htx, y)",
     "\\logrCostFull": "\\logrCost = -y\\log(\\htx) - ((1-y)\\log(1-\\htx)",
@@ -34,7 +37,13 @@
     "\\sigmoid": "g(z) = \\frac{1}{1+e^{-z}}",
 
     "\\hTx": "h_\\Theta(x)",
+    "\\hTxi": "h_\\Theta(x^{(i)})",
     "\\ssb": "#1^{(#2)}",
     "\\T": "\\Theta_{#1}",
-    "\\Ts": "\\Theta^{(#1)}"
+    "\\Ts": "\\Theta^{(#1)}",
+
+    "\\nnCostRegularizer" : "\\frac{\\lambda}{2m} \\sum_{l=1}^{L-1}\\sum_{i=1}^{s_l}\\sum_{j=1}^{s_{l + 1}}(\\t{ji}^{(l)})^2",
+    "\\nnCostGeneric": "J(\\T{}) = -\\frac{1}{m}\\Bigg[\\sum_{i=1}^{m}\\sum_{k=1}^{K} y^{(i)}_k\\log(\\hTxi)_k + (1-y^{(i)}_k)\\log(1-\\hTxi)_k)\\Bigg]",
+    "\\trainingSetGeneric":  "\\{(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)})\\}",
+    "\\nnPartial": "\\frac{\\delta}{\\delta\\Ts{l}_{ij}}J(\\T{})"
 }
