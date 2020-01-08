@@ -39,6 +39,11 @@ Compute
 
 $$ \frac{(3*(1.01)^3 + 2) - (3*(0.99)^3 + 2)}{2*0.01} = 9.0003$$
 
+```matlab
+>> (3*(1.01)^3 + 2 - (3*0.99^3 + 2))/0.02
+ans =  9.0003
+```
+
 ## Q4
 Which of the following statements are true? Check all that apply.
 
