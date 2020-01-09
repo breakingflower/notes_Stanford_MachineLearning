@@ -62,13 +62,87 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Cost in last exercise
+%J = 1/m * (transpose(-y) * log(sigmoid(X*theta)) ... %positive
+%        - transpose(1-y)*log(1-sigmoid(X*theta))) ... %negative
+%        + lambda/(2*m)*sum(theta(2:end,:).^2); %regularization
+%         
+%grad = 1/m * transpose(X) * (sigmoid(X*theta) - y); 
+%grad(2:end) += lambda/m*theta(2:end); % regularization only on last term
+
+% Recode the y vector into a boolean matrix where each sample has
+% a vector of solutions (one hot encoding)
+% (from https://stackoverflow.com/questions/38947948/ ...
+% how-can-i-hot-one-encode-in-matlab)
+y_onehot = y==1:max(y);
+
+% a1 = x with bias
+a1 = [ones(m, 1) X];
+
+z2 = a1*transpose(Theta1);
+a2 = sigmoid(z2);                       % calculate g(z1)
+a2 = [ones(size(a2, 1) ,1) a2];         % add bias
+
+z3 = a2*transpose(Theta2);
+a3 = sigmoid(z3);                       % calculate g(z2) 
 
 
+% double sum for cost function as in notes
+J = 1/m * sum(sum(-y_onehot.*log(a3) ...    % y_onehot is in the correct shape
+        - (1-y_onehot).*log(1-a3)));        % elementwise multiplying....
+
+% regularizer term, assume only two layers so can hardcode t1 t2. 
+% a small error on the dimensionality of theta, as it was inverted to the 
+% previous exercise. 
+regularizer = lambda/(2*m)*(    sum(sum(Theta1(:, 2:end).^2, 2),1) ...
+                            +   sum(sum(Theta2(:, 2:end).^2, 2),1));
+
+J = J + regularizer;
+
+%grad = 1/m * transpose(a1) * (a3-y); 
+%grad = 1/m * transpose(X) * (sigmoid(X*theta) - y); 
+
+[_, hx] = max(a3, [], 2);               % max is the actual number -> prediction
+
+%sizes a3[5000 10] y_onehot[5000 10]
+%d3 = a3 - y_onehot; % 5000 10
+% sizes =  T2[10 26] d3[5000 10] sigmoidGradient[5000 25]
+%d2 = (d3*Theta2)(:, 2:end).*sigmoidGradient(z2);
+% d2 = transpose(transpose(Theta2(:, 2:end))*transpose(d3)).*sigmoidGradient(z2);
+
+% sizes = d2[5000 25] a2[5000 26] d3[5000 10] a3[5000 10]
+%d = d2*transpose(a2(:, 2:end)) + d3*transpose(a3); 
+
+%d = 0
+for i=1:m
+    % if you transpose the a1i value its less transposes in the next steps
+    a1i = a1(i,:)';
+    z2i = z2(i, :); 
+    a2i = a2(i, :);
+    z3i = z3(i, :);
+    a3i = a3(i, :); 
+    yi = y_onehot(i, :); 
+    
+    d3i = a3i - yi; % loss on classification
+
+    d2i = d3i*Theta2.* [1 sigmoidGradient(z2i)];  % loss in second layer
+    d2i = d2i(2:end); % remove d2
+    Theta1_grad = Theta1_grad + transpose(a1i*d2i); %a1i [401 1] d2i[1 25]
+    Theta2_grad = Theta2_grad + transpose(transpose(a2i)*d3i); %a2i [1 26] d3i[1 10]
+end
+
+Theta1_grad = 1/m * Theta1_grad;  
+Theta2_grad = 1/m * Theta2_grad;  
+
+% elementwise because its a scalar :) 
+Theta1_regularizer = lambda/m .* Theta1; 
+Theta2_regularizer = lambda/m .* Theta2; 
+
+Theta1_grad(:, 2:end) += Theta1_regularizer(:, 2:end); 
+Theta2_grad(:, 2:end) += Theta2_regularizer(:, 2:end); 
 
 
-
-
-
+% disp('something') ;
 
 
 
