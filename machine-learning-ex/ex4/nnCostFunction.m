@@ -62,14 +62,6 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-% Cost in last exercise
-%J = 1/m * (transpose(-y) * log(sigmoid(X*theta)) ... %positive
-%        - transpose(1-y)*log(1-sigmoid(X*theta))) ... %negative
-%        + lambda/(2*m)*sum(theta(2:end,:).^2); %regularization
-%         
-%grad = 1/m * transpose(X) * (sigmoid(X*theta) - y); 
-%grad(2:end) += lambda/m*theta(2:end); % regularization only on last term
-
 % Recode the y vector into a boolean matrix where each sample has
 % a vector of solutions (one hot encoding)
 % (from https://stackoverflow.com/questions/38947948/ ...
@@ -99,21 +91,6 @@ regularizer = lambda/(2*m)*(    sum(sum(Theta1(:, 2:end).^2, 2),1) ...
 
 J = J + regularizer;
 
-%grad = 1/m * transpose(a1) * (a3-y); 
-%grad = 1/m * transpose(X) * (sigmoid(X*theta) - y); 
-
-[_, hx] = max(a3, [], 2);               % max is the actual number -> prediction
-
-%sizes a3[5000 10] y_onehot[5000 10]
-%d3 = a3 - y_onehot; % 5000 10
-% sizes =  T2[10 26] d3[5000 10] sigmoidGradient[5000 25]
-%d2 = (d3*Theta2)(:, 2:end).*sigmoidGradient(z2);
-% d2 = transpose(transpose(Theta2(:, 2:end))*transpose(d3)).*sigmoidGradient(z2);
-
-% sizes = d2[5000 25] a2[5000 26] d3[5000 10] a3[5000 10]
-%d = d2*transpose(a2(:, 2:end)) + d3*transpose(a3); 
-
-%d = 0
 for i=1:m
     % if you transpose the a1i value its less transposes in the next steps
     a1i = a1(i,:)';
@@ -140,19 +117,6 @@ Theta2_regularizer = lambda/m .* Theta2;
 
 Theta1_grad(:, 2:end) += Theta1_regularizer(:, 2:end); 
 Theta2_grad(:, 2:end) += Theta2_regularizer(:, 2:end); 
-
-
-% disp('something') ;
-
-
-
-
-
-
-
-
-
-
 
 % -------------------------------------------------------------
 
