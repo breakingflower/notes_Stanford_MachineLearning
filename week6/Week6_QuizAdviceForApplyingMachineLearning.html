@@ -1,0 +1,52 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js">
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/texmath.css">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/vscode-texmath.css">
+
+</head><body>
+<h1 id="quiz-advice-for-applying-machine-learning-1" data-line="0" class="code-line">Quiz Advice for Applying machine learning</h1>
+<h2 id="q1-1" data-line="2" class="code-line">Q1</h2>
+<p data-line="3" class="code-line">You train a learning algorithm, and find that it has unacceptably high error on the test set. You plot the learning curve, and obtain the figure below. Is the algorithm suffering from high bias, high variance, or neither?</p>
+<p data-line="5" class="code-line"><img src="quiz_q1.png" alt="q1" class="loading" id="image-hash-5722b7cbe18a645aaeba570ebcbb49a780d34e5db2ebc485ab9a58831025e26f"></p>
+<ul>
+<li data-line="7" class="code-line">[ ] high bias</li>
+<li data-line="8" class="code-line">[x] high variance <code>train error low, test error high</code></li>
+<li data-line="9" class="code-line">[ ] none</li>
+</ul>
+<h2 id="q2-1" data-line="11" class="code-line">Q2</h2>
+<p data-line="13" class="code-line">Suppose you have implemented regularized logistic regression to classify what object is in an image (i.e., to do object recognition). However, when you test your hypothesis on a new set of images, you find that it makes unacceptably large errors with its predictions on the new images. However, your hypothesis performs well (has low error) on the training set. Which of the following are promising steps to take? Check all that apply.</p>
+<ul>
+<li data-line="15" class="code-line">[x] Get more training examples.</li>
+<li data-line="16" class="code-line">[ ] Try adding polynomial features.</li>
+<li data-line="17" class="code-line">[ ] Use fewer training examples.</li>
+<li data-line="18" class="code-line">[x] Try using a smaller set of features.</li>
+</ul>
+<p data-line="20" class="code-line"><code>overfitting, high variance problem.</code></p>
+<h2 id="q3-1" data-line="22" class="code-line">Q3</h2>
+<p data-line="24" class="code-line">Suppose you have implemented regularized logistic regression to predict what items customers will purchase on a web shopping site. However, when you test your hypothesis on a new set of customers, you find that it makes unacceptably large errors in its predictions. Furthermore, the hypothesis performs poorly on the training set. Which of the following might be promising steps to take? Check all that apply.</p>
+<ul>
+<li data-line="26" class="code-line">[x] Try decreasing the regularization parameter <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq>. <code>overregularizing resulting in poor fit on training set</code></li>
+<li data-line="27" class="code-line">[x] Try adding polynomial features. <code>more complex function to better fit training data</code></li>
+<li data-line="28" class="code-line">[ ] Try evaluating the hypothesis on a cross validation set rather than the test set. <code>no effect on test set errors</code></li>
+<li data-line="29" class="code-line">[ ] Use fewer training examples. <code>..reduces overfitting but it's underfit</code></li>
+</ul>
+<h2 id="q4-1" data-line="31" class="code-line">Q4</h2>
+<p data-line="33" class="code-line">Which of the following statements are true? Check all that apply.</p>
+<ul>
+<li data-line="35" class="code-line">[x] Suppose you are training a regularized linear regression model. The recommended way to choose what value of regularization parameter <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq> to use is to choose the value of <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq> which gives the lowest cross validation error.</li>
+<li data-line="36" class="code-line">[x] The performance of a learning algorithm on the training set will typically be better than its performance on the test set.</li>
+<li data-line="37" class="code-line">[ ] Suppose you are training a regularized linear regression model.The recommended way to choose what value of regularization parameter <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq> to use is to choose the value of <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq> which gives the lowest training set error.</li>
+<li data-line="38" class="code-line">[ ] Suppose you are training a regularized linear regression model. The recommended way to choose what value of regularization parameter <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq> to use is to choose the value of <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span></eq> which gives the lowest test set error.</li>
+</ul>
+<h2 id="q5-1" data-line="40" class="code-line">Q5</h2>
+<p data-line="42" class="code-line">Which of the following statements are true? Check all that apply.</p>
+<ul>
+<li data-line="44" class="code-line">[x] When debugging learning algorithms, it is useful to plot a learning curve to understand if there is a high bias or high variance problem. <code>gives you an idea</code></li>
+<li data-line="45" class="code-line">[x] A model with more parameters is more prone to overfitting and typically has higher variance. <code>more parameters, more complex function, more overfitting</code></li>
+<li data-line="46" class="code-line">[ ] If a neural network has much lower training error than test error, then adding more layers will help bring the test error down because we can fit the test set better. <code>def not</code></li>
+<li data-line="47" class="code-line">[x] If a learning algorithm is suffering from high bias, only adding more training examples may not improve the test error significantly. <code>true</code></li>
+</ul>
+
+</body></html>

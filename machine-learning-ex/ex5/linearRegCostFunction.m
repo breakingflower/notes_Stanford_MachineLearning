@@ -20,15 +20,15 @@ grad = zeros(size(theta));
 %
 
 
+% we are talking about LINEAR regression not logistic...
+%size X[12 1] th[2 1] hx[12x2] y[12 1] 
+hx = X*theta;
 
+J = 1/(2*m)*transpose((hx-y))*(hx-y) ...
+        + lambda/(2*m)*sum(theta(2:end).^2);         
 
-
-
-
-
-
-
-
+grad = 1/m * transpose(X)*(hx-y);
+grad(2:end) += lambda/m*theta(2:end);
 
 % =========================================================================
 

@@ -45,5 +45,8 @@
     "\\nnCostRegularizer" : "\\frac{\\lambda}{2m} \\sum_{l=1}^{L-1}\\sum_{i=1}^{s_l}\\sum_{j=1}^{s_{l + 1}}(\\t{ji}^{(l)})^2",
     "\\nnCostGeneric": "J(\\T{}) = -\\frac{1}{m}\\Bigg[\\sum_{i=1}^{m}\\sum_{k=1}^{K} y^{(i)}_k\\log(\\hTxi)_k + (1-y^{(i)}_k)\\log(1-\\hTxi)_k)\\Bigg]",
     "\\trainingSetGeneric":  "\\{(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)})\\}",
-    "\\nnPartial": "\\frac{\\delta}{\\delta\\Ts{l}_{ij}}J(\\T{})"
+    "\\nnPartial": "\\frac{\\delta}{\\delta\\Ts{l}_{ij}}J(\\T{})",
+
+    "\\Jtrain": "J_{train}(\\t{}) = \\frac{1}{2m}\\sum_{i=1}^{m}(\\htxi - \\ssb{y}{i})^2",
+    "\\Jval": "J_{val}(\\t{}) = \\frac{1}{2m}\\sum_{i=1}^{m_{val}}(h_{\\t{}}(\\ssb{x}{i}_{val}) - \\ssb{y}{i}_{val})^2"
 }
