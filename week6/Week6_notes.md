@@ -110,3 +110,96 @@ Neural networks and overfitting:
 * large neural network: more parameters, more prone to overfitting, computationally expensive. Use regularization ($\lambda$) to address overfitting. `often the larger the better`. Usually, using one hidden layer is default & ok, but you can try more to see how it performs on the validation set.
 
 `To evaluate the different lambda parameters, use lambda to train the network but during inference leave out this parameter (ie set it to 0)`
+
+## Machine Learning System Design
+
+### Spam Classification
+
+Building a spam classifier
+
+* spam (1)/ no spam(0)
+* supervised learning
+* $x$ = features in the emai
+    * words like deal buy discount ,... (1) or non spam words such as my name , ...
+* labels $y \in \{0,1\}$.
+* Define a feature vector $x = \mat{0 \\ 1 \\ 0 \\ 1 \\ 0}$ that contains 0 or one if an occurence of this word appears in the email.
+* If the represnetation has length $x=100$ the size of the vector will be 100x1, with $x=1$ if the word appears in the email and $x=0$ if it does not appear.
+* `Note, in practice we take the most frequently occuring words (10k - 50k) in training set rather than manually picking them.`
+
+How do I best use my time to build this:
+
+* collect lots of data --> "honeypot" project: create fake email adresses to collect spam email
+* develop features based on email routing from the email header
+* develop more sophisticated features for message body, e.g. punctuation ,. ...
+* develop algorithm to detect misspellings (m0rtgage , w4tches ,...).
+
+`Dont fixate on one thing!! Keep looking at your errors to assert you're not wasting time; become more systematic.`
+
+### Recommended Approach
+
+1) Start with a simple algo that you can implement quickly. Spend at most 24hours to get a quick-and-dirty run implementation and test it on your validation data.
+2) Once you have done this, plot learning curves of the training and test errors to figure out if you are facing high bias/ high variance. `avoid pre-mature optimization! Let evidence guide your decisions`
+3) Error analysis: manually examine examples that your algo made errors on. See if you spot a systematic trend.
+
+### Error analysis
+
+* $m_{val} = 500$ samples in your validation set
+* algo misclassifies 100 emails
+* manually examine 100 errors, categorize them based on
+    * type of email (pharma, fake, phising...) --> count these mistakes, and figure out that it performs the worst on "xx" --> focus on this first.
+    * features that are good / bad (misspellings, email routing, 
+    punctuations..) --> focus on the one that performs the worst.
+
+Numerical evaluation -> shuold discount /discounts /... be treated as the same word? use stemming software for this (Porter stemmer); this lets u treat all of these words as the same word. This can also hurt performance; universe and university can be the same thing, bc they start with the same word part. `Just try and see if it works. Look at validation errors with / without stemming.` Also consider upper / lower case, ...
+
+`A single value error metric is easy to evaluate if a design choice was right or not.`
+
+### Error metrics for skewed classes
+
+#### Cancer classification example
+
+Train $\htx$ where y=1 if cancer, y=0 otherwise. We find 1% error. However, only 0.50% of patients have cancer.
+
+If you just predict 0 always you get less error!
+
+`When facing skewed classes, use precision / recall.`
+
+![precision vs recall](precision_recall.png)
+
+### Trading off precision and recall
+
+$$ \textnormal{Precision} = \frac{\textnormal{TP}}{\textnormal{TP+FP}}$$
+
+$$ \textnormal{Recall} = \frac{\textnormal{TP}}{\textnormal{TP+FN}}$$
+
+Logistic regression $0 \leq \htx \leq 1$, predict $y=1$ if $\htx > 0.5$. You can up the trheshold value to have higher certainty on the result, for example $\htx \geq 0.9$. You get higher precision, but lower recall.
+
+Suppose you want to avoid missing too many cases of cancer (avoid FN). You can set for example $\htx \geq 0.3$.Now we get a higher recall classifier, but lower precision.
+
+In other words, there's a trade-off. In general, we predict $y=1$ if $\htx \geq$ threshold. You can plot a curve:
+
+![prec_recall_tradeoff.png](prec_recall_tradeoff.png)
+
+`The shape of the PR curve is not always like this`
+
+### $F_1$ score
+
+Takes the precision and recall and creates a single real number evaluation metric.
+
+$F_1$ score combines precision and recall as follows: 
+
+$$F_1 = 2\frac{PR}{P+R}$$
+
+### Data for machine learning
+
+`It's not who has the best algo that wins, it's who has the most data.`
+
+Large data rationale: assume $x \in \RR^{n+1}$ has enough info to predict $y$ correctly.
+
+Given input $x$, can a human expert confidently predict $y$? If yes, increasing amount of data will probably make the prediction better.
+
+Lets use a learnign algo with `alot of parameters` (`low bias` algorithms; neural networks with many hidden units), so they can fit very complex functions. $J_{train}$ will be small. Use a very `large training` set so the algo is unlikely to overfit on the dataset (`low variance` problem). $J_{train} ~= J_{test}$. 
+
+1) can a human predict this accurately from this input
+2) can we get a big training set
+
