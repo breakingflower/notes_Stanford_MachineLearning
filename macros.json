@@ -41,6 +41,7 @@
     "\\hTx": "h_\\Theta(x)",
     "\\hTxi": "h_\\Theta(x^{(i)})",
     "\\ssb": "#1^{(#2)}",
+    "\\ssbi": "#1^{(i)}",
     "\\T": "\\Theta_{#1}",
     "\\Ts": "\\Theta^{(#1)}",
 
@@ -53,5 +54,7 @@
     "\\Jval": "J_{val}(\\t{}) = \\frac{1}{2m}\\sum_{i=1}^{m_{val}}(h_{\\t{}}(\\ssb{x}{i}_{val}) - \\ssb{y}{i}_{val})^2",
 
     "\\costSVM": "\\undersetnorm{min}{\\t{}} C \\sum_{i=1}^{m} \\Bigg[y^{(i)} \\textnormal{cost}_1(\\T{}^Tx^{(i)}) + (1-y^{(i)})\\textnormal{cost}_0(\\T{}^Tx^{(i)})\\Bigg] + \\frac{1}{2} \\sum_{i=0}^{n} \\t{j}^2",
-    "\\costSVMkernel": "\\undersetnorm{min}{\\t{}} C \\sum_{i=1}^{m} \\Bigg[y^{(i)} \\textnormal{cost}_1(\\t{}^Tf^{(i)}) + (1-y^{(i)})\\textnormal{cost}_0(\\t{}^Tf^{(i)})\\Bigg] + \\frac{1}{2} \\sum_{j=1}^{m} \\t{j}^2"
+    "\\costSVMkernel": "\\undersetnorm{min}{\\t{}} C \\sum_{i=1}^{m} \\Bigg[y^{(i)} \\textnormal{cost}_1(\\t{}^Tf^{(i)}) + (1-y^{(i)})\\textnormal{cost}_0(\\t{}^Tf^{(i)})\\Bigg] + \\frac{1}{2} \\sum_{j=1}^{m} \\t{j}^2",
+
+    "\\trainingSetUnsupervised": "\\{\\ssb{x}{1}, \\ssb{x}{2}, \\ssb{x}{3}, ... , \\ssb{x}{m} \\}"
 }
