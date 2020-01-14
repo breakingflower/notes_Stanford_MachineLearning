@@ -96,16 +96,16 @@ while ~isempty(email_contents)
     % Note: You can use strcmp(str1, str2) to compare two strings (str1 and
     %       str2). It will return 1 only if the two strings are equivalent.
     %
-
-
-
-
-
-
-
-
-
-
+    
+    % compare str to all words in vocab list
+    % find the index , checked if the list > 1 (not the case)
+    idx = find(strcmp(str, vocabList)==1);
+    
+    if not(isempty(idx))
+        word_indices = [word_indices ; idx]; 
+    else % we did not find a match between str and vocablist
+        continue;
+    endif
     % =============================================================
 
 

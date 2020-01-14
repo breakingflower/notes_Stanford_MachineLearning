@@ -70,7 +70,7 @@ Which of the following might be promising steps to take? Check all that apply.
 
 Which of the following statements are true? Check all that apply.
 
-* [ ] The maximum value of the Gaussian kernel (i.e., sim(x, l1)) is 1. `max value becomes exp(0) = 1`
+* [x] The maximum value of the Gaussian kernel (i.e., sim(x, l1)) is 1. `max value becomes exp(0) = 1`
 
 * [x] Suppose you have 2D input examples (ie, $\ssb{x}{i} \in \RR^2$). The decision boundary of the SVM (with the linear kernel) is a straight line.
 
