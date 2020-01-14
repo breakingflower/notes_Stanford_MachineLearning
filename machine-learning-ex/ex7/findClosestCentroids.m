@@ -21,11 +21,11 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i=1:size(X, 1)
+    # get the norm w.r.t centroids and return the norm for each row (sample)
+    distances = norm( (X(i, :) - centroids), 2, "rows"); 
+    [_, idx(i)] = min(distances); 
+end
 
 % =============================================================
 

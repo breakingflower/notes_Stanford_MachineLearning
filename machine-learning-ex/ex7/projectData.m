@@ -18,8 +18,8 @@ Z = zeros(size(X, 1), K);
 %                    projection_k = x' * U(:, k);
 %
 
-
-
+% from notes, but changing from U_reduce' * X to X*U_reduce for dimension mismatch
+Z = X*U(:, 1:K);
 
 % =============================================================
 

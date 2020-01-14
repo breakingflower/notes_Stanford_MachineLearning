@@ -20,10 +20,10 @@ S = zeros(n);
 %       number of examples).
 %
 
-
-
-
-
+% from notes (Andrew stated at some poitn): 
+Sigma = (1/m) * X' * X;
+% apply svd
+[U, S, V] = svd(Sigma);
 
 
 % =========================================================================

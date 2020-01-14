@@ -21,6 +21,8 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %               
 
+% from notes, U_reduce * z = X_approx; change order to get dimension mismatch out
+X_rec = Z * U(:, 1:K)';
 
 
 % =============================================================
